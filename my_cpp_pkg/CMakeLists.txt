@@ -10,7 +10,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp  REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(rosidl_typesupport_cpp REQUIRED)
-
+find_package(example_interfaces REQUIRED)
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
@@ -31,11 +31,27 @@ ament_target_dependencies(cpp_node_oop rclcpp)
 add_executable(control_cpp src/control.cpp)
 ament_target_dependencies(control_cpp rclcpp geometry_msgs rosidl_typesupport_cpp)
 
+add_executable(robot_news_station src/robot_news_station.cpp)
+ament_target_dependencies(robot_news_station rclcpp std_msgs)
+
+add_executable(smartphone src/smartphone.cpp)
+ament_target_dependencies(smartphone rclcpp std_msgs)
+
+add_executable(number_publisher src/number_publisher.cpp)
+ament_target_dependencies(number_publisher rclcpp std_msgs)
+
+add_executable(number_counter src/number_counter.cpp)
+ament_target_dependencies(number_counter rclcpp std_msgs)
+
 ament_export_dependencies(rclcpp geometry_msgs rosidl_typesupport_cpp)
 install(TARGETS
   cpp_node
   cpp_node_oop
   control_cpp
+  robot_news_station
+  smartphone
+  number_publisher
+  number_counter
   DESTINATION lib/${PROJECT_NAME}
 )
 
