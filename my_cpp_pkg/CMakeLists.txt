@@ -43,6 +43,12 @@ ament_target_dependencies(number_publisher rclcpp std_msgs)
 add_executable(number_counter src/number_counter.cpp)
 ament_target_dependencies(number_counter rclcpp std_msgs)
 
+add_executable(robot_position src/robot_position.cpp)
+ament_target_dependencies(robot_position rclcpp std_msgs)
+
+add_executable(turtlebot_goal src/turtlebot_goal.cpp)
+ament_target_dependencies(turtlebot_goal rclcpp geometry_msgs)
+
 ament_export_dependencies(rclcpp geometry_msgs rosidl_typesupport_cpp)
 install(TARGETS
   cpp_node
@@ -52,6 +58,8 @@ install(TARGETS
   smartphone
   number_publisher
   number_counter
+  turtlebot_goal
+  robot_position
   DESTINATION lib/${PROJECT_NAME}
 )
 
