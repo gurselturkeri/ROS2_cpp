@@ -46,10 +46,15 @@ ament_target_dependencies(number_counter rclcpp std_msgs)
 add_executable(robot_position src/robot_position.cpp)
 ament_target_dependencies(robot_position rclcpp std_msgs)
 
-add_executable(turtlebot_goal src/turtlebot_goal.cpp)
-ament_target_dependencies(turtlebot_goal rclcpp geometry_msgs)
+add_executable(add_two_ints_server src/add_two_ints_server.cpp)
+ament_target_dependencies(add_two_ints_server rclcpp example_interfaces geometry_msgs)
 
-ament_export_dependencies(rclcpp geometry_msgs rosidl_typesupport_cpp)
+
+add_executable(turtlebot_goal src/turtlebot_goal.cpp)
+ament_target_dependencies(turtlebot_goal rclcpp geometry_msgs) 
+
+#ament_export_dependencies(rclcpp geometry_msgs rosidl_typesupport_cpp example_interfaces) 
+
 install(TARGETS
   cpp_node
   cpp_node_oop
@@ -60,6 +65,7 @@ install(TARGETS
   number_counter
   turtlebot_goal
   robot_position
+  add_two_ints_server
   DESTINATION lib/${PROJECT_NAME}
 )
 
